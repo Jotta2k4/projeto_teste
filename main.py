@@ -131,7 +131,6 @@ WPVULNDB_API_TOKEN = "sv6ravJXyeoxviYzYCiKf3sMlG9ZBfT2s7qsGavgahY"
 
 
 def check_plugin_vulnerabilities(plugin_name, plugin_version):
-    #Verifica vulnerabilidades em um plugin WordPress
     headers = {
         'Authorization': f'Token token={WPVULNDB_API_TOKEN}',
         'User-Agent': 'WP Vuln Scanner/1.0'
@@ -148,7 +147,6 @@ def check_plugin_vulnerabilities(plugin_name, plugin_version):
 
             relevant_vulns = []
             for vuln in vulnerabilities:
-                # Verifica se a versão do plugin é afetada
                 if 'fixed_in' not in vuln or vuln['fixed_in'] > plugin_version:
                     relevant_vulns.append(vuln)
 
@@ -162,7 +160,6 @@ def check_plugin_vulnerabilities(plugin_name, plugin_version):
 
 
 def generate_report(plugin_name, plugin_version, vulnerabilities):
-    """Gera um relatório simples das vulnerabilidades encontradas"""
     print("\n" + "=" * 50)
     print(f"Relatório de Segurança para o Plugin: {plugin_name} (versão {plugin_version})")
     print(f"Data da verificação: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
@@ -193,9 +190,8 @@ def main():
     print("Scanner de Vulnerabilidades em Plugins WordPress")
     print("=" * 50)
 
-    # Lista de plugins para verificar (nome e versão)
     plugins_to_check = [
-        # {"name": "akismet", "version": "4.1.7"},  # Exemplo - substitua pelos plugins que deseja verificar
+        # {"name": "akismet", "version": "4.1.7"},
         # {"name": "woocommerce", "version": "5.5.2"},
         # {"name": "elementor", "version": "3.4.7"},
         {"name": "duplicator", "version": "1.3.28"}
